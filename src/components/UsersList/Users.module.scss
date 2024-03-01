@@ -1,0 +1,25 @@
+.table {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  padding: 0;
+}
+
+.cell {
+  flex: 1;
+  border: 1px solid black;
+  padding: 5px;
+  width: 150px;
+  list-style-type: none;
+}
+
+.wrapper__image {
+  width: 80px;
+}
+
+.small_image {
+  width: 100%;
+}
