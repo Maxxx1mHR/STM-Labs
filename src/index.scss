@@ -1,0 +1,21 @@
+@import './styles/base/normalize';
+
+html {
+  font-size: 10px;
+}
+
+.container {
+  max-width: 128rem;
+  margin: 0 auto;
+}
+
+body {
+  background: rgb(188, 210, 220);
+}
+
+h1 {
+  color: rgb(26, 32, 77);
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 5rem;
+}
