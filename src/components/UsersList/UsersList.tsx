@@ -1,28 +1,20 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import styles from './Users.module.scss';
+import { formatDate } from '../../helpers/functions/formatDate';
 
 export const UsersList = () => {
   const usersList = useSelector(
     (state: RootState) => state.users.initialState.usersList
   );
   return (
-    <div className={styles.table}>
-      <div className={styles.row}>
-        <div className={styles.cell}>Name</div>
-        <div className={styles.cell}>Picture</div>
-        <div className={styles.cell}>location</div>
-        <div className={styles.cell}>email</div>
-        <div className={styles.cell}>phone</div>
-        <div className={styles.cell}>registred</div>
-      </div>
-
-      {usersList.map((item) => (
-        <ul className={styles.row} key={item.login.uuid}>
-          <li className={styles.cell}>
-            {item.name.first} {item.name.last}
-          </li>
-          <li className={styles.cell}>
+    <div className={styles.wrapper}>
+      <ul className={styles.users__list}>
+        {usersList.map((item) => (
+          <li className={styles.users__item} key={item.login.uuid}>
+            <h2 className={styles.users__header}>
+              {item.name.first} {item.name.last}
+            </h2>
             <div className={styles.wrapper__image}>
               <img
                 src={item.picture.thumbnail}
@@ -30,15 +22,35 @@ export const UsersList = () => {
                 className={styles.small_image}
               />
             </div>
+            <ul className={styles.users__info}>
+              <li>
+                <div>
+                  <span className={styles.label}>Location:</span>
+                  {item.location.state}
+                </div>
+              </li>
+              <li>
+                <div>
+                  <span className={styles.label}>Email:</span>
+                  {item.email}
+                </div>
+              </li>
+              <li>
+                <div>
+                  <span className={styles.label}>Phone: </span>
+                  {item.phone}
+                </div>
+              </li>
+              <li>
+                <div>
+                  <span className={styles.label}>Registered:</span>
+                  {formatDate(item.registered.date)}
+                </div>
+              </li>
+            </ul>
           </li>
-          <li className={styles.cell}>
-            {item.location.state} {item.location.city}
-          </li>
-          <li className={styles.cell}>{item.email}</li>
-          <li className={styles.cell}>{item.phone}</li>
-          <li className={styles.cell}>{item.registered.date}</li>
-        </ul>
-      ))}
+        ))}
+      </ul>
     </div>
   );
 };
