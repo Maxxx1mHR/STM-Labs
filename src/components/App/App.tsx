@@ -4,6 +4,7 @@ import { UsersList } from '../UsersList/UsersList';
 import { useEffect, useState } from 'react';
 import { setUsers } from '../../redux/usersSlice';
 import { Search } from '../Search/Search';
+import { Loader } from '../Loader/Loader';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -17,13 +18,17 @@ export const App = () => {
 
   const [searchText, setSearchText] = useState('');
 
-  if (isLoading) return <h1>Loading...</h1>;
-
   return (
-    <section className="main container">
-      <h1>Test assignment for the position of Junior Frontend Developer</h1>
-      <Search setSearchText={setSearchText} />
-      <UsersList searchText={searchText} />
-    </section>
+    <main className="main container">
+      <header>
+        <h1>Test assignment for the position of Junior Frontend Developer</h1>
+      </header>
+      <section>
+        <Search setSearchText={setSearchText} />
+      </section>
+      <section>
+        {isLoading ? <Loader /> : <UsersList searchText={searchText} />}
+      </section>
+    </main>
   );
 };

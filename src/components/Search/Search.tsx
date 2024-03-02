@@ -41,7 +41,6 @@ export const Search = ({
         <button
           className={styles.button_clear}
           onClick={() => {
-            console.log('1');
             if (textInput.current) {
               textInput.current.value = '';
               dispatch(setFilteredUsers(usersList));
