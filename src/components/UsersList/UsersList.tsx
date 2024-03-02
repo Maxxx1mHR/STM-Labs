@@ -22,12 +22,19 @@ export const UsersList = ({ searchText }: { searchText: string }) => {
             <h2 className={styles.users__header}>
               {item.name.first} {item.name.last}
             </h2>
-            <div className={styles.wrapper__image}>
-              <img
-                src={item.picture.thumbnail}
-                alt="Small Image User"
-                className={styles.small_image}
-              />
+            <div className={styles.container}>
+              <div className={styles.wrapper__image}>
+                <img
+                  src={item.picture.thumbnail}
+                  alt="Small resolution image user"
+                  className={styles.small_image}
+                />
+                <img
+                  src={item.picture.large}
+                  alt="Large resolution image user"
+                  className={styles.large_image}
+                />
+              </div>
             </div>
             <ul className={styles.users__info}>
               <li>

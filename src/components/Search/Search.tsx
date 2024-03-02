@@ -27,28 +27,30 @@ export const Search = ({
 
   return (
     <div className={styles.wrapper}>
-      <input
-        type="text"
-        ref={textInput}
-        placeholder="Search by name"
-        className={styles.input}
-        onChange={() => {
-          const searchText = textInput.current?.value || '';
-          handleInputChange(searchText);
-        }}
-      />
-      <button
-        className={styles.button_clear}
-        onClick={() => {
-          console.log('1');
-          if (textInput.current) {
-            textInput.current.value = '';
-            dispatch(setFilteredUsers(usersList));
-          }
-        }}
-      >
-        <span className={styles.button_text}>Clear</span>
-      </button>
+      <div className={styles.wrapper__input}>
+        <input
+          type="text"
+          ref={textInput}
+          placeholder="Search by name"
+          className={styles.input}
+          onChange={() => {
+            const searchText = textInput.current?.value || '';
+            handleInputChange(searchText);
+          }}
+        />
+        <button
+          className={styles.button_clear}
+          onClick={() => {
+            console.log('1');
+            if (textInput.current) {
+              textInput.current.value = '';
+              dispatch(setFilteredUsers(usersList));
+            }
+          }}
+        >
+          <span className={styles.button_text}>Clear</span>
+        </button>
+      </div>
     </div>
   );
 };

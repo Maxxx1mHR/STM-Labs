@@ -19,16 +19,37 @@
   margin-bottom: 1rem;
 }
 
-.wrapper__image {
-  text-align: center;
+.container {
   border-bottom: 1px solid rgb(8, 3, 48);
   margin-bottom: 1rem;
 }
 
-.small_image {
-  width: 80px;
+.wrapper__image {
+  position: relative;
+  width: 150px;
+  margin: 0 auto 1rem;
+  &:hover {
+    .large_image {
+      opacity: 1;
+    }
+  }
+}
 
+.small_image {
+  width: 100%;
   border-radius: 100%;
+}
+
+.large_image {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  border-radius: 100%;
+  opacity: 0;
+  transition: opacity 0.5s;
+  cursor: pointer;
 }
 
 .users__info {
