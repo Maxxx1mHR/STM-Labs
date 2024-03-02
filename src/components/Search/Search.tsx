@@ -1,29 +1,18 @@
-import { Dispatch, SetStateAction, useRef, useState } from 'react';
-import { debounce } from '../../helpers/functions/debounce';
-import { filterUsersBySubstring } from '../../helpers/functions/filterUsers';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
-import { setFilteredUsers } from '../../redux/usersSlice';
+import { useRef } from 'react';
 import styles from './Search.module.scss';
 
+interface SearchProps {
+  handleInputChange: (searchText: string) => void;
+  handleResetInput: (
+    textInput: React.RefObject<HTMLInputElement> | null
+  ) => void;
+}
+
 export const Search = ({
-  setSearchText,
-}: {
-  setSearchText: Dispatch<SetStateAction<string>>;
-}) => {
-  const dispatch = useDispatch();
-
-  const usersList = useSelector(
-    (state: RootState) => state.users.initialState.usersList
-  );
-
+  handleInputChange,
+  handleResetInput,
+}: SearchProps) => {
   const textInput = useRef<HTMLInputElement>(null);
-
-  const handleInputChange = debounce((searchText: string) => {
-    const filtered = filterUsersBySubstring(searchText, usersList);
-    setSearchText(searchText);
-    dispatch(setFilteredUsers(filtered));
-  }, 300);
 
   return (
     <div className={styles.wrapper}>
@@ -34,17 +23,13 @@ export const Search = ({
           placeholder="Search by name"
           className={styles.input}
           onChange={() => {
-            const searchText = textInput.current?.value || '';
-            handleInputChange(searchText);
+            handleInputChange(textInput.current?.value || '');
           }}
         />
         <button
           className={styles.button_clear}
           onClick={() => {
-            if (textInput.current) {
-              textInput.current.value = '';
-              dispatch(setFilteredUsers(usersList));
-            }
+            handleResetInput(textInput);
           }}
         >
           <span className={styles.button_text}>Clear</span>

@@ -6,6 +6,7 @@ import { setUsers } from '../../redux/usersSlice';
 import { Search } from '../Search/Search';
 import { Loader } from '../Loader/Loader';
 import { Footer } from '../Footer/Footer';
+import { Header } from '../Header/Header';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ export const App = () => {
     }
   }, [dispatch, isLoading, error, users]);
 
-  const [searchText, setSearchText] = useState('');
+  // const [searchText, setSearchText] = useState('');
 
   return (
     <div className="wrapper">
@@ -26,10 +27,11 @@ export const App = () => {
       </header>
       <main className="main">
         <section>
-          <Search setSearchText={setSearchText} />
+          {/* <Search /> */}
+          <Header />
         </section>
         <section className="container">
-          {isLoading ? <Loader /> : <UsersList searchText={searchText} />}
+          {isLoading ? <Loader /> : <UsersList />}
         </section>
       </main>
       <Footer />

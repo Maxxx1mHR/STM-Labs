@@ -3,9 +3,13 @@ import { RootState } from '../../redux/store';
 import styles from './Users.module.scss';
 import { formatDate } from '../../helpers/functions/formatDate';
 
-export const UsersList = ({ searchText }: { searchText: string }) => {
+export const UsersList = () => {
   const usersList = useSelector(
     (state: RootState) => state.users.initialState.usersList
+  );
+
+  const searchText = useSelector(
+    (state: RootState) => state.search.initialState.searchText
   );
 
   const filteredUsers = useSelector(

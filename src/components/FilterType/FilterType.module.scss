@@ -1,0 +1,18 @@
+.filer {
+  width: 300px;
+  margin: 0 auto 2rem auto;
+}
+
+.filer__item {
+  &:first-child {
+    margin-bottom: 1rem;
+  }
+}
+
+.filer__item_label {
+  display: flex;
+}
+
+.filer__item_input {
+  margin-right: 1rem;
+}
