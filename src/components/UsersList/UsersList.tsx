@@ -16,7 +16,13 @@ export const UsersList = () => {
     (state: RootState) => state.users.initialState.filteredUsers
   );
 
-  console.log('filter', filteredUsers);
+  if (filteredUsers.length === 0 && searchText !== '') {
+    return (
+      <h2 className={styles.not_found}>
+        No users matching the search filter were found!
+      </h2>
+    );
+  }
 
   return (
     <div className={styles.wrapper}>

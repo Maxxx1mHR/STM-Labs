@@ -23,7 +23,7 @@ export const Search = ({
           placeholder="Search by name"
           className={styles.input}
           onChange={() => {
-            handleInputChange(textInput.current?.value || '');
+            handleInputChange(textInput.current?.value.trim() || '');
           }}
         />
         <button
