@@ -1,15 +1,17 @@
 @import './styles/base/normalize';
 @import './styles/abstract/constants';
 @import './styles/abstract/typography';
+@import './styles/abstract/mixins';
 
 html {
   font-size: 10px;
+  font-family: 'Proxima', sans-serif;
 }
 
 .wrapper {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 .container {
@@ -18,7 +20,7 @@ html {
 }
 
 body {
-  background: rgb(188, 210, 220);
+  background: $color-background;
 }
 
 .main {
@@ -26,8 +28,17 @@ body {
 }
 
 h1 {
-  color: rgb(26, 32, 77);
-  font-size: 3rem;
-  text-align: center;
   margin: 5rem 0 3rem;
+  text-align: center;
+  @include font($size: 3rem, $weight: 700);
+  transition: font-size 0.5s;
+  @include media-laptop {
+    font-size: 2.6rem;
+  }
+  @include media-tablet {
+    font-size: 2rem;
+  }
+  @include media-mobile {
+    font-size: 1.8rem;
+  }
 }

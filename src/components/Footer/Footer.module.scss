@@ -1,5 +1,8 @@
+@import '@styles/abstract/constants';
+@import '@styles/abstract/mixins';
+
 .footer {
-  background-color: rgb(12, 12, 56);
+  background-color: $color-main-dark;
   padding-bottom: 1rem;
 }
 
@@ -35,17 +38,15 @@
 .telegram {
   display: flex;
   text-decoration: none;
-  color: #fff;
-  font-size: 1.4rem;
   opacity: 0.5;
   transition: all 0.7s;
+  @include font($size: 1.6rem, $weight: 700, $color: $color-secondary-light);
   &:hover {
     opacity: 1;
   }
 }
 
 .year {
-  font-size: 1.4rem;
-  color: #fff;
   text-align: center;
+  @include font($size: 1.4rem, $color: $color-light);
 }

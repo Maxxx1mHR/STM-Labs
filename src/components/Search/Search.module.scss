@@ -1,16 +1,19 @@
+@import '@styles/abstract/constants';
+@import '@styles/abstract/mixins';
+
 .wrapper {
   position: relative;
-  text-align: center;
   margin-bottom: 5rem;
+  text-align: center;
 }
 
 .input {
   width: 30rem;
   height: 3rem;
   padding: 0.2rem 4.5rem 0.2rem 0.5rem;
-  border: 2px solid rgb(19, 30, 77);
+  border: 2px solid $color-main-dark;
   border-radius: 1rem;
-  font-size: 1.6rem;
+  @include font($size: 1.8rem, $color: $color-secondary-light);
   &:focus {
     outline: none;
   }
@@ -29,12 +32,13 @@
   height: 3rem;
   background-color: transparent;
   border: none;
-  font-size: 1.4rem;
+  @include font($size: 1.6rem);
+
   cursor: pointer;
   &:hover {
     .button_text {
-      color: red;
-      transform: scale(1.2);
+      color: $color-danger;
+      transform: scale(1.1);
     }
   }
 }
@@ -50,6 +54,5 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 1.4rem;
-  color: red;
+  @include font($size: 1.4rem, $weight: 700, $color: $color-danger);
 }

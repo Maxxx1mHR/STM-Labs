@@ -1,18 +1,52 @@
-.filer {
-  width: 300px;
+@import '@styles/abstract/constants';
+@import '@styles/abstract/mixins';
+
+.fieldset {
+  width: 30rem;
   margin: 0 auto 2rem auto;
+  border-color: $color-secondary-light;
 }
 
-.filer__item {
+.fieldset__item {
   &:first-child {
     margin-bottom: 1rem;
   }
 }
 
-.filer__item_label {
+.fieldset__item_label {
+  position: relative;
   display: flex;
+  padding-left: 2rem;
+  @include font($size: 1.4rem, $weight: 300, $color: $color-secondary-light);
+  cursor: pointer;
 }
 
-.filer__item_input {
+.fieldset__item_input {
+  display: none;
   margin-right: 1rem;
+}
+
+.legend {
+  @include font($size: 1.8rem, $weight: 500);
+}
+
+.custom_radio {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid $color-main-dark;
+}
+
+.fieldset__item_input:checked + .custom_radio::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.7rem;
+  height: 0.7rem;
+  background-color: $color-secondary-light;
 }
