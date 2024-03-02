@@ -1,0 +1,37 @@
+.wrapper {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.input {
+  width: 25rem;
+  height: 3rem;
+  padding: 0.2rem 0.5rem;
+  border: 2px solid rgb(19, 30, 77);
+  border-right: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+.button_clear {
+  height: 3rem;
+  padding: 0.2rem 0.5rem;
+  background-color: #fff;
+  border: 2px solid rgb(19, 30, 77);
+  border-left: none;
+  cursor: pointer;
+  &:hover {
+    .button_text {
+      color: red;
+      transform: scale(1.2);
+    }
+  }
+}
+
+.button_text {
+  transition:
+    transform 0.5s,
+    color 0.5s;
+  display: inline-block;
+}

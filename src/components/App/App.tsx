@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useGetUsersQuery } from '../../redux/usersApi';
-import { RootState } from '../../redux/store';
 import { UsersList } from '../UsersList/UsersList';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { setUsers } from '../../redux/usersSlice';
+import { Search } from '../Search/Search';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -15,12 +15,15 @@ export const App = () => {
     }
   }, [dispatch, isLoading, error, users]);
 
+  const [searchText, setSearchText] = useState('');
+
   if (isLoading) return <h1>Loading...</h1>;
 
   return (
     <section className="main container">
       <h1>Test assignment for the position of Junior Frontend Developer</h1>
-      <UsersList />
+      <Search setSearchText={setSearchText} />
+      <UsersList searchText={searchText} />
     </section>
   );
 };

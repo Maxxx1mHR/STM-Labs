@@ -3,14 +3,21 @@ import { RootState } from '../../redux/store';
 import styles from './Users.module.scss';
 import { formatDate } from '../../helpers/functions/formatDate';
 
-export const UsersList = () => {
+export const UsersList = ({ searchText }: { searchText: string }) => {
   const usersList = useSelector(
     (state: RootState) => state.users.initialState.usersList
   );
+
+  const filteredUsers = useSelector(
+    (state: RootState) => state.users.initialState.filteredUsers
+  );
+
+  console.log('filter', filteredUsers);
+
   return (
     <div className={styles.wrapper}>
       <ul className={styles.users__list}>
-        {usersList.map((item) => (
+        {(searchText === '' ? usersList : filteredUsers).map((item) => (
           <li className={styles.users__item} key={item.login.uuid}>
             <h2 className={styles.users__header}>
               {item.name.first} {item.name.last}

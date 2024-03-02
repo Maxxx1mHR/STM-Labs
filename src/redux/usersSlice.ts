@@ -3,10 +3,12 @@ import { IUser } from '../types';
 
 interface UsersState {
   usersList: IUser[];
+  filteredUsers: IUser[];
 }
 
 const initialState: UsersState = {
   usersList: [],
+  filteredUsers: [],
 };
 
 const usersSlice = createSlice({
@@ -18,9 +20,12 @@ const usersSlice = createSlice({
     setUsers(state, action: PayloadAction<IUser[]>) {
       state.initialState.usersList = action.payload;
     },
+    setFilteredUsers(state, action: PayloadAction<IUser[]>) {
+      state.initialState.filteredUsers = action.payload;
+    },
   },
 });
 
-export const { setUsers } = usersSlice.actions;
+export const { setUsers, setFilteredUsers } = usersSlice.actions;
 
 export default usersSlice.reducer;
