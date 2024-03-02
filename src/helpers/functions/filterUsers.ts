@@ -4,9 +4,7 @@ export const filterUsersBySubstring = (
   searchText: string,
   listOfUsers: IUser[]
 ) => {
-  console.log('...', searchText);
   if (!searchText) {
-    console.log('te');
     return listOfUsers;
   }
   return listOfUsers.filter(({ name }) =>
