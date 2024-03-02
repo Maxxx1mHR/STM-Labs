@@ -4,13 +4,23 @@ html {
   font-size: 10px;
 }
 
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .container {
-  max-width: 128rem;
   margin: 0 auto;
+  max-width: 128rem;
 }
 
 body {
   background: rgb(188, 210, 220);
+}
+
+.main {
+  flex: 1;
 }
 
 h1 {

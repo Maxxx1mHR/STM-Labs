@@ -1,0 +1,51 @@
+.footer {
+  background-color: rgb(12, 12, 56);
+  padding-bottom: 1rem;
+}
+
+.footer__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.github_img {
+  width: 5rem;
+  opacity: 0.5;
+  transition: all 0.7s;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.stmlabs_img {
+  width: 5rem;
+  opacity: 0.5;
+  transition: all 0.7s;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.copyright_img {
+  width: 2rem;
+}
+
+.telegram {
+  display: flex;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.4rem;
+  opacity: 0.5;
+  transition: all 0.7s;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.year {
+  font-size: 1.4rem;
+  color: #fff;
+  text-align: center;
+}
