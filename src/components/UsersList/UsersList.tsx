@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
+import { RootState } from '@redux/store';
 import styles from './Users.module.scss';
-import { formatDate } from '../../helpers/functions/formatDate';
+import { formatDate } from '@helpers/functions/formatDate';
 
 export const UsersList = () => {
   const usersList = useSelector(

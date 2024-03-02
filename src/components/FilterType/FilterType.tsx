@@ -1,7 +1,7 @@
 import styles from './FilterType.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilterType } from '../../redux/searchSlice';
-import { RootState } from '../../redux/store';
+import { setFilterType } from '@redux/searchSlice';
+import { RootState } from '@redux/store';
 
 interface FilterTypeProps {
   handleSwitchTypeFilter: (typeFiler: string) => void;

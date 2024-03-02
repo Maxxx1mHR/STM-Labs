@@ -1,6 +1,6 @@
 import styles from './Footer.module.scss';
-import stmLabs from '../../assets/icons/stm.svg';
-import gitHub from '../../assets/icons/github.svg';
+import stmLabs from '@assets/icons/stm.svg';
+import gitHub from '@assets/icons/github.svg';
 
 export const Footer = () => {
   return (

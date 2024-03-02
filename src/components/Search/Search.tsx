@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './Search.module.scss';
-import { checkInputString } from '../../helpers/validation/checkInputString';
+import { checkInputString } from '@helpers/validation/checkInputString';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
+import { RootState } from '@redux/store';
 
 interface SearchProps {
   handleInputChange: (searchText: string) => void;

@@ -1,12 +1,12 @@
 import { useDispatch } from 'react-redux';
-import { useGetUsersQuery } from '../../redux/usersApi';
-import { UsersList } from '../UsersList/UsersList';
-import { useEffect, useState } from 'react';
-import { setUsers } from '../../redux/usersSlice';
-import { Loader } from '../Loader/Loader';
-import { Footer } from '../Footer/Footer';
-import { Header } from '../Header/Header';
-import ErrorBoundary from '../../errorBoundary/ErrorBoundary';
+import { useGetUsersQuery } from '@redux/usersApi';
+import { UsersList } from './UsersList/UsersList';
+import { useEffect } from 'react';
+import { setUsers } from '@redux/usersSlice';
+import { Loader } from './Loader/Loader';
+import { Footer } from './Footer/Footer';
+import { Header } from './Header/Header';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -26,7 +26,6 @@ export const App = () => {
         </header>
         <main className="main">
           <section>
-            {/* <Search /> */}
             <Header />
           </section>
           <section className="container">

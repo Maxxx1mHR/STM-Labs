@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { debounce } from '../../helpers/functions/debounce';
+import { debounce } from '@helpers/functions/debounce';
 import {
   filterUsersByStartWordWith,
   filterUsersBySubstring,
-} from '../../helpers/functions/filterUsers';
+} from '@helpers/functions/filterUsers';
 import { FilterType } from '../FilterType/FilterType';
 import { Search } from '../Search/Search';
-import { RootState } from '../../redux/store';
-import { setSearchText } from '../../redux/searchSlice';
-import { setFilteredUsers } from '../../redux/usersSlice';
+import { RootState } from '@redux/store';
+import { setSearchText } from '@redux/searchSlice';
+import { setFilteredUsers } from '@redux/usersSlice';
 
 export const Header = () => {
   const dispatch = useDispatch();

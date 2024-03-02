@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IUser } from '../types';
+import { IUser } from '@type/interfaces/user.interface';
 
 const _api = 'https://randomuser.me/api/';
 
