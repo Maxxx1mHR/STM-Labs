@@ -53,13 +53,13 @@ export const Header = () => {
   };
 
   return (
-    <>
+    <section>
       <FilterType handleSwitchTypeFilter={handleSwitchTypeFilter} />
       <Search
         handleInputChange={handleInputChange}
         handleResetInput={handleResetInput}
       />
       <ItemPerPage />
-    </>
+    </section>
   );
 };

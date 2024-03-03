@@ -13,19 +13,15 @@ import {
   filterUsersBySubstring,
 } from '@helpers/functions/filterUsers';
 import { setSearchText } from '@redux/searchSlice';
+import { Navigation } from './Navigation/Navigation';
 
 export const App = () => {
   const dispatch = useDispatch();
 
-  const ALL_COUNT_USERS = useSelector(
-    (state: RootState) => state.router.initialState.ALL_COUNT_USERS
-  );
   const countUsersPerPage = useSelector(
     (state: RootState) => state.router.initialState.countUsersPerPage
   );
-  const countPage = useSelector(
-    (state: RootState) => state.router.initialState.countPage
-  );
+
   const page = useSelector(
     (state: RootState) => state.router.initialState.page
   );
@@ -45,11 +41,9 @@ export const App = () => {
   } = useGetUsersQuery({ page: page, count: countUsersPerPage });
 
   useEffect(() => {
-    console.log('use effect', users);
     if (!isLoading && !error && users) {
       dispatch(setUsers(users.results));
 
-      //_______________________________ Подумать!!!
       const filtered =
         typeFiler === 'substring'
           ? filterUsersBySubstring(searchText, users.results)
@@ -66,12 +60,9 @@ export const App = () => {
           <h1>Test assignment for the position of Junior Frontend Developer</h1>
         </header>
         <main className="main">
-          <section>
-            <Header />
-          </section>
-          <section className="container">
-            {isLoading ? <Loader /> : <UsersList />}
-          </section>
+          <Header />
+          {isLoading ? <Loader /> : <UsersList />}
+          <Navigation />
         </main>
         <Footer />
       </div>

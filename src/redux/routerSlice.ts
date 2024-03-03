@@ -2,13 +2,13 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 const ALL_COUNT_USERS = 5000;
 const countUsersPerPage = 15;
-const countPage = Math.ceil(ALL_COUNT_USERS / countUsersPerPage);
+const countPages = Math.ceil(ALL_COUNT_USERS / countUsersPerPage);
 
 const initialState = {
   ALL_COUNT_USERS,
   countUsersPerPage,
   page: 1,
-  countPage,
+  countPages,
 };
 
 const routerSlice = createSlice({
@@ -19,11 +19,9 @@ const routerSlice = createSlice({
   reducers: {
     setCountUsersPerPage(state, action: PayloadAction<number>) {
       state.initialState.countUsersPerPage = action.payload;
-    },
-    setCountPage(state) {
-      // state.initialState.countPage = Math.ceil(
-      //   ALL_COUNT_USERS / state.initialState.countUsersPerPage
-      // );
+      state.initialState.countPages = Math.ceil(
+        ALL_COUNT_USERS / state.initialState.countUsersPerPage
+      );
     },
     setFirstPage(state) {
       state.initialState.page = 1;
@@ -44,7 +42,6 @@ const routerSlice = createSlice({
 
 export const {
   setCountUsersPerPage,
-  setCountPage,
   setFirstPage,
   setLastPage,
   setNextPage,
