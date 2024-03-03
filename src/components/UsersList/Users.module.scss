@@ -4,6 +4,11 @@
 .wrapper {
   margin-bottom: 2rem;
 }
+.nav_bottom {
+  display: flex;
+  flex-direction: column;
+  min-height: 50vh;
+}
 .users__list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 30rem));

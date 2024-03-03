@@ -13,10 +13,25 @@ import {
   filterUsersBySubstring,
 } from '@helpers/functions/filterUsers';
 import { setSearchText } from '@redux/searchSlice';
-import { Navigation } from './Navigation/Navigation';
+import { useSearchParams } from 'react-router-dom';
+import { setCountUsersPerPage, setPage } from '@redux/routerSlice';
 
 export const App = () => {
   const dispatch = useDispatch();
+
+  const [searchParams] = useSearchParams();
+
+  const getPage = searchParams.get('page');
+  const getResults = searchParams.get('results');
+
+  useEffect(() => {
+    if (getResults) {
+      dispatch(setCountUsersPerPage(Number(getResults)));
+    }
+    if (getPage) {
+      dispatch(setPage(Number(getPage)));
+    }
+  }, []);
 
   const countUsersPerPage = useSelector(
     (state: RootState) => state.router.initialState.countUsersPerPage
@@ -38,7 +53,10 @@ export const App = () => {
     data: users,
     error,
     isLoading,
-  } = useGetUsersQuery({ page: page, count: countUsersPerPage });
+  } = useGetUsersQuery({
+    page: page,
+    count: countUsersPerPage,
+  });
 
   useEffect(() => {
     if (!isLoading && !error && users) {
@@ -62,7 +80,6 @@ export const App = () => {
         <main className="main">
           <Header />
           {isLoading ? <Loader /> : <UsersList />}
-          <Navigation />
         </main>
         <Footer />
       </div>

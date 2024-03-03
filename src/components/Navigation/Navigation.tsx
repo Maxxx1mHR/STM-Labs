@@ -7,8 +7,11 @@ import {
   setNextPage,
   setPrevPage,
 } from '@redux/routerSlice';
+import { useSearchParams } from 'react-router-dom';
 
 export const Navigation = () => {
+  const [, setSearchParams] = useSearchParams();
+
   const countPages = useSelector(
     (state: RootState) => state.router.initialState.countPages
   );
@@ -17,12 +20,20 @@ export const Navigation = () => {
     (state: RootState) => state.router.initialState.page
   );
 
+  const countUsersPerPage = useSelector(
+    (state: RootState) => state.router.initialState.countUsersPerPage
+  );
+
   const dispatch = useDispatch();
 
   const incrementPage = () => {
     if (page === countPages) {
       return;
     }
+    setSearchParams({
+      page: String(page + 1),
+      results: String(countUsersPerPage),
+    });
     dispatch(setNextPage());
   };
 
@@ -30,6 +41,10 @@ export const Navigation = () => {
     if (page === 1) {
       return;
     }
+    setSearchParams({
+      page: String(page - 1),
+      results: String(countUsersPerPage),
+    });
     dispatch(setPrevPage());
   };
 
@@ -37,6 +52,7 @@ export const Navigation = () => {
     if (page === 1) {
       return;
     }
+    setSearchParams({ page: '1', results: String(countUsersPerPage) });
     dispatch(setFirstPage());
   };
 
@@ -44,6 +60,10 @@ export const Navigation = () => {
     if (page === countPages) {
       return;
     }
+    setSearchParams({
+      page: String(countPages),
+      results: String(countUsersPerPage),
+    });
     dispatch(setLastPage());
   };
 

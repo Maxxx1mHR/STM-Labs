@@ -23,6 +23,9 @@ const routerSlice = createSlice({
         ALL_COUNT_USERS / state.initialState.countUsersPerPage
       );
     },
+    setPage(state, action: PayloadAction<number>) {
+      state.initialState.page = action.payload;
+    },
     setFirstPage(state) {
       state.initialState.page = 1;
     },
@@ -42,6 +45,7 @@ const routerSlice = createSlice({
 
 export const {
   setCountUsersPerPage,
+  setPage,
   setFirstPage,
   setLastPage,
   setNextPage,
