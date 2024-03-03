@@ -1,31 +1,16 @@
-import { useSelector } from 'react-redux';
-import { RootState } from '@redux/store';
 import styles from './Users.module.scss';
 import { formatDate } from '@helpers/functions/formatDate';
-import { Navigation } from '@components/Navigation/Navigation';
 
 export const UsersList = () => {
-  const usersList = useSelector(
-    (state: RootState) => state.users.initialState.usersList
-  );
-
-  const searchText = useSelector(
-    (state: RootState) => state.search.initialState.searchText
-  );
-
-  const filteredUsers = useSelector(
-    (state: RootState) => state.users.initialState.filteredUsers
-  );
-
-  if (filteredUsers.length === 0 && searchText !== '') {
-    return (
-      <div className={styles.nav_bottom}>
-        <h2 className={styles.not_found}>
-          No users matching the search filter were found!
-        </h2>
-      </div>
-    );
-  }
+  // if (filteredUsers.length === 0 && searchText !== '') {
+  //   return (
+  //     <div className={styles.nav_bottom}>
+  //       <h2 className={styles.not_found}>
+  //         No users matching the search filter were found!
+  //       </h2>
+  //     </div>
+  //   );
+  // }
 
   return (
     <>
@@ -33,7 +18,7 @@ export const UsersList = () => {
         <div className={styles.nav_bottom}>
           <div className={styles.wrapper}>
             <ul className={styles.users__list}>
-              {(searchText === '' ? usersList : filteredUsers).map((item) => (
+              {/* {(searchText === '' ? usersList : filteredUsers).map((item) => (
                 <li className={styles.users__item} key={item.login.uuid}>
                   <h2 className={styles.users__header}>
                     {item.name.first} {item.name.last}
@@ -79,12 +64,11 @@ export const UsersList = () => {
                     </li>
                   </ul>
                 </li>
-              ))}
+              ))} */}
             </ul>
           </div>
         </div>
       </section>
-      <Navigation />
     </>
   );
 };

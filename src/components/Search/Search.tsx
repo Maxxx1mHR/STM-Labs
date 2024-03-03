@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './Search.module.scss';
 import { checkInputString } from '@helpers/validation/checkInputString';
-import { useSelector } from 'react-redux';
-import { RootState } from '@redux/store';
 
 interface SearchProps {
   handleInputChange: (searchText: string) => void;
@@ -18,13 +16,13 @@ export const Search = ({
   const textInput = useRef<HTMLInputElement>(null);
 
   const [error, setError] = useState(false);
-  const searchText = useSelector(
-    (state: RootState) => state.search.initialState.searchText
-  );
+  // const searchText = useSelector(
+  //   (state: RootState) => state.search.initialState.searchText
+  // );
 
-  useEffect(() => {
-    setError(!checkInputString(searchText));
-  }, [searchText]);
+  // useEffect(() => {
+  //   setError(!checkInputString(searchText));
+  // }, [searchText]);
 
   return (
     <div className={styles.wrapper}>
