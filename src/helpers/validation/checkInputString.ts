@@ -1,4 +1,4 @@
-const regExp = /^[\p{L}]*$/u;
+const regExp = /^[\p{L}\s]*$/u;
 
 export const checkInputString = (inputString: string) => {
   return regExp.test(inputString);

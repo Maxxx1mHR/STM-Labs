@@ -11,8 +11,8 @@ export const usersApi = createApi({
   reducerPath: 'usersApi',
   baseQuery: fetchBaseQuery({ baseUrl: `${_api}` }),
   endpoints: (build) => ({
-    getUsers: build.query<IResponse, { count: number }>({
-      query: ({ count }) => `?results=${count}`,
+    getUsers: build.query<IResponse, { page: number; count: number }>({
+      query: ({ page, count }) => `?page=${page}&results=${count}`,
     }),
   }),
 });

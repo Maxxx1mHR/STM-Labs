@@ -3,7 +3,7 @@
 
 .wrapper {
   position: relative;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   text-align: center;
 }
 
@@ -54,5 +54,12 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  transition: font-size 0.5s;
   @include font($size: 1.4rem, $weight: 700, $color: $color-danger);
+  @include media-tablet {
+    font-weight: 500;
+  }
+  @include media-mobile {
+    font-size: 1.2rem;
+  }
 }

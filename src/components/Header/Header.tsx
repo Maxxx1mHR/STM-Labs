@@ -9,6 +9,7 @@ import { Search } from '../Search/Search';
 import { RootState } from '@redux/store';
 import { setSearchText } from '@redux/searchSlice';
 import { setFilteredUsers } from '@redux/usersSlice';
+import { ItemPerPage } from '@components/ItemPerPage/ItemPerPage';
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -58,6 +59,7 @@ export const Header = () => {
         handleInputChange={handleInputChange}
         handleResetInput={handleResetInput}
       />
+      <ItemPerPage />
     </>
   );
 };
