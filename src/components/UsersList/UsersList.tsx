@@ -1,12 +1,18 @@
 import styles from './Users.module.scss';
 import { formatDate } from '@helpers/functions/formatDate';
-import { User } from '@type/interfaces/user.interface';
+import { User } from '@type/user.interface';
 
 interface UsersList {
   usersList: User[];
+  inputSearch: string;
+  usersListFiltred: User[];
 }
 
-export const UsersList = ({ usersList }: UsersList) => {
+export const UsersList = ({
+  usersList,
+  inputSearch,
+  usersListFiltred,
+}: UsersList) => {
   // if (filteredUsers.length === 0 && searchText !== '') {
   //   return (
   //     <div className={styles.nav_bottom}>
@@ -17,6 +23,8 @@ export const UsersList = ({ usersList }: UsersList) => {
   //   );
   // }
   // searchText === '' ? usersList : filteredUsers
+
+  const users = inputSearch ? usersListFiltred : usersList;
   return (
     <>
       <section className="container">
@@ -32,7 +40,7 @@ export const UsersList = ({ usersList }: UsersList) => {
                 <div className={styles.cell}>registred</div>
               </div>
 
-              {usersList.map((item) => (
+              {users.map((item) => (
                 <ul className={styles.row} key={item.login.uuid}>
                   <li className={styles.cell}>
                     {item.name.first} {item.name.last}
@@ -58,7 +66,9 @@ export const UsersList = ({ usersList }: UsersList) => {
                   </li>
                   <li className={styles.cell}>{item.email}</li>
                   <li className={styles.cell}>{item.phone}</li>
-                  <li className={styles.cell}>{item.registered.date}</li>
+                  <li className={styles.cell}>
+                    {formatDate(item.registered.date)}
+                  </li>
                 </ul>
               ))}
             </div>

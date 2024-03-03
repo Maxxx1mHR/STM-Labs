@@ -1,22 +1,10 @@
-import { User } from '@type/interfaces/user.interface';
+import { TypeFilter } from '@type/type';
+import { User } from '@type/user.interface';
 
-export const filterUsersBySubstring = (
+export const filterUsers = (
   searchText: string,
-  listOfUsers: User[]
-) => {
-  if (!searchText) {
-    return listOfUsers;
-  }
-  return listOfUsers.filter(({ name }) =>
-    `${name.first} ${name.last}`
-      .toLowerCase()
-      .includes(searchText.toLowerCase())
-  );
-};
-
-export const filterUsersByStartWordWith = (
-  searchText: string,
-  listOfUsers: User[]
+  listOfUsers: User[],
+  typeFilter: TypeFilter
 ) => {
   if (!searchText) {
     return listOfUsers;
@@ -24,11 +12,34 @@ export const filterUsersByStartWordWith = (
 
   const searchTextLower = searchText.toLowerCase();
 
-  const filteredUsers = listOfUsers.filter(
-    ({ name }) =>
-      `${name.first} ${name.last}`.toLowerCase().startsWith(searchTextLower) ||
-      `${name.last} ${name.first}`.toLowerCase().startsWith(searchTextLower)
-  );
+  const filterFunction = (user: User) => {
+    const fullName = `${user.name.first} ${user.name.last}`.toLowerCase();
+    return typeFilter === 'substring'
+      ? fullName.includes(searchTextLower)
+      : fullName.startsWith(searchTextLower) ||
+          `${user.name.last} ${user.name.first}`
+            .toLowerCase()
+            .startsWith(searchTextLower);
+  };
 
-  return filteredUsers;
+  return listOfUsers.filter(filterFunction);
 };
+
+// export const filterUsersByStartWordWith = (
+//   searchText: string,
+//   listOfUsers: User[]
+// ) => {
+//   if (!searchText) {
+//     return listOfUsers;
+//   }
+
+//   const searchTextLower = searchText.toLowerCase();
+
+//   const filteredUsers = listOfUsers.filter(
+//     ({ name }) =>
+//       `${name.first} ${name.last}`.toLowerCase().startsWith(searchTextLower) ||
+//       `${name.last} ${name.first}`.toLowerCase().startsWith(searchTextLower)
+//   );
+
+//   return filteredUsers;
+// };

@@ -1,10 +1,34 @@
+import { TypeFilter } from '@type/type';
 import styles from './FilterType.module.scss';
+import { useEffect, useState } from 'react';
+import { filterUsers } from '@helpers/functions/filterUsers';
+import { User } from '@type/user.interface';
 
 interface FilterTypeProps {
-  handleSwitchTypeFilter: (typeFiler: string) => void;
+  inputSearch: string;
+  usersList: User[];
+  setUsersListFiltred: (users: User[]) => void;
+  typeFilter: TypeFilter;
+  setTypeFilter: (typeFilter: TypeFilter) => void;
 }
 
-export const FilterType = ({ handleSwitchTypeFilter }: FilterTypeProps) => {
+export const FilterType = ({
+  inputSearch,
+  usersList,
+  setUsersListFiltred,
+  typeFilter,
+  setTypeFilter,
+}: FilterTypeProps) => {
+  const handleSwitchTypeFilter = (typeFilter: TypeFilter) => {
+    setTypeFilter(typeFilter);
+    const filtered = filterUsers(inputSearch, usersList, typeFilter);
+    setUsersListFiltred(filtered);
+  };
+
+  useEffect(() => {
+    console.log(typeFilter);
+  }, [typeFilter]);
+
   return (
     <fieldset className={styles.fieldset}>
       <legend className={styles.legend}>Select type filer:</legend>
@@ -14,12 +38,11 @@ export const FilterType = ({ handleSwitchTypeFilter }: FilterTypeProps) => {
             <input
               type="radio"
               name="filter"
-              // checked={typeFiler === 'substring' ? true : false}
+              checked={typeFilter === 'substring'}
               value="substring"
               className={styles.fieldset__item_input}
-              onChange={(e) => {
-                handleSwitchTypeFilter(e.target.value);
-                // dispatch(setFilterType(e.target.value));
+              onChange={() => {
+                handleSwitchTypeFilter('substring');
               }}
             />
             <span className={styles.custom_radio}></span>
@@ -32,11 +55,10 @@ export const FilterType = ({ handleSwitchTypeFilter }: FilterTypeProps) => {
               type="radio"
               name="filter"
               value="startWith"
-              // checked={typeFiler === 'startWith' ? true : false}
+              checked={typeFilter === 'startWith'}
               className={styles.fieldset__item_input}
-              onChange={(e) => {
-                // dispatch(setFilterType(e.target.value));
-                handleSwitchTypeFilter(e.target.value);
+              onChange={() => {
+                handleSwitchTypeFilter('startWith');
               }}
             />
             <span className={styles.custom_radio}></span>
