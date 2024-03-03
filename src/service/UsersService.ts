@@ -1,0 +1,17 @@
+const _apiUrl = import.meta.env.VITE_APP_API_URL;
+
+const getResource = async (url: string) => {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      throw new Error('Error');
+    }
+    return await res.json();
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const getAllUsers = (results: number) => {
+  return getResource(`${_apiUrl}?results=${results}`);
+};

@@ -1,8 +1,8 @@
-import { IUser } from '@type/interfaces/user.interface';
+import { User } from '@type/interfaces/user.interface';
 
 export const filterUsersBySubstring = (
   searchText: string,
-  listOfUsers: IUser[]
+  listOfUsers: User[]
 ) => {
   if (!searchText) {
     return listOfUsers;
@@ -16,7 +16,7 @@ export const filterUsersBySubstring = (
 
 export const filterUsersByStartWordWith = (
   searchText: string,
-  listOfUsers: IUser[]
+  listOfUsers: User[]
 ) => {
   if (!searchText) {
     return listOfUsers;

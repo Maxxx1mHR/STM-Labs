@@ -12,7 +12,8 @@
       "@type/*": ["types/*"],
       "@helpers/*": ["helpers/*"],
       "@styles/*": ["styles/*"],
-      "@assets/*": ["assets/*"]
+      "@assets/*": ["assets/*"],
+      "@service/*": ["service/*"]
     },
 
     /* Bundler mode */

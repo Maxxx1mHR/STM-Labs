@@ -13,6 +13,10 @@ export default defineConfig({
       '@helpers': path.resolve(__dirname, 'src/helpers'),
       '@styles': path.resolve(__dirname, 'src/styles'),
       '@assets': path.resolve(__dirname, 'src/assets'),
+      '@service': path.resolve(__dirname, 'src/service'),
     },
   },
+  // define: {
+  //   'process.env': process.env,
+  // },
 });

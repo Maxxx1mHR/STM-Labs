@@ -1,5 +1,5 @@
 import { UsersList } from './UsersList/UsersList';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Loader } from './Loader/Loader';
 import { Footer } from './Footer/Footer';
 import { Header } from './Header/Header';
@@ -8,9 +8,32 @@ import {
   filterUsersByStartWordWith,
   filterUsersBySubstring,
 } from '@helpers/functions/filterUsers';
+import { User } from '@type/interfaces/user.interface';
+import { getAllUsers } from '@service/UsersService';
 
 export const App = () => {
-  useEffect(() => {}, []);
+  const [users, setUsersList] = useState<User[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [usersPerPage] = useState(15);
+
+  const getUsers = async () => {
+    setIsLoading(true);
+
+    try {
+      const results = await getAllUsers(usersPerPage);
+      console.log(results);
+      if (results) {
+        setUsersList(results);
+      }
+      setIsLoading(false);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   return (
     <ErrorBoundary>
