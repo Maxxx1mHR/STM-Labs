@@ -12,7 +12,7 @@ import { User } from '@type/interfaces/user.interface';
 import { getAllUsers } from '@service/UsersService';
 
 export const App = () => {
-  const [users, setUsersList] = useState<User[]>([]);
+  const [usersList, setUsersList] = useState<User[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [usersPerPage] = useState(15);
 
@@ -21,9 +21,9 @@ export const App = () => {
 
     try {
       const results = await getAllUsers(usersPerPage);
-      console.log(results);
+      console.log(results.results);
       if (results) {
-        setUsersList(results);
+        setUsersList(results.results);
       }
       setIsLoading(false);
     } catch (error) {
@@ -43,7 +43,7 @@ export const App = () => {
         </header>
         <main className="main">
           <Header />
-          <UsersList />
+          <UsersList usersList={usersList} />
         </main>
         <Footer />
       </div>
