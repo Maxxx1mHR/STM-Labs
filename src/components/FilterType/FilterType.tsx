@@ -1,6 +1,5 @@
 import { TypeFilter } from '@type/type';
 import styles from './FilterType.module.scss';
-import { useEffect, useState } from 'react';
 import { filterUsers } from '@helpers/functions/filterUsers';
 import { User } from '@type/user.interface';
 
@@ -24,10 +23,6 @@ export const FilterType = ({
     const filtered = filterUsers(inputSearch, usersList, typeFilter);
     setUsersListFiltred(filtered);
   };
-
-  useEffect(() => {
-    console.log(typeFilter);
-  }, [typeFilter]);
 
   return (
     <fieldset className={styles.fieldset}>

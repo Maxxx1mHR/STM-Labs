@@ -74,20 +74,21 @@
 //   @include font($size: 1.6rem, $weight: 700);
 // }
 
-// .not_found {
-//   text-align: center;
-//   transition: font-size 0.5s;
-//   @include font($size: 2rem, $weight: 700, $color: $color-danger);
+.not_found {
+  text-align: center;
+  transition: font-size 0.5s;
+  @include font($size: 2rem, $weight: 700, $color: $color-danger);
 
-//   @include media-mobile {
-//     font-size: 1.8rem;
-//   }
-// }
+  @include media-mobile {
+    font-size: 1.8rem;
+  }
+}
 
 .table {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-x: auto;
 }
 
 .row {

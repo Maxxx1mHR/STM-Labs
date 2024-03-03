@@ -1,26 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './Search.module.scss';
-import { checkInputString } from '@helpers/validation/checkInputString';
 import { TypeFilter } from '@type/type';
 import { User } from '@type/user.interface';
 import { filterUsers } from '@helpers/functions/filterUsers';
+import { checkInputString } from '@helpers/validation/checkInputString';
 
 interface SearchProps {
   usersList: User[];
-  setUsersList: (users: User[]) => void;
-
   setInputSearch: (inputSearch: string) => void;
   typeFilter: TypeFilter;
   setUsersListFiltred: (users: User[]) => void;
-  //   handleInputChange: (searchText: string) => void;
-  //   handleResetInput: (
-  //     textInput: React.RefObject<HTMLInputElement> | null
-  //   ) => void;
 }
 
 export const Search = ({
   usersList,
-  setUsersList,
   setInputSearch,
   typeFilter,
   setUsersListFiltred,
@@ -34,16 +27,19 @@ export const Search = ({
     const filtered = filterUsers(textInput, usersList, typeFilter);
     setUsersListFiltred(filtered);
     setInputSearch(textInput);
-    console.log(filtered);
-    // setUsersList(filtered);
   };
-  // const searchText = useSelector(
-  //   (state: RootState) => state.search.initialState.searchText
-  // );
 
-  // useEffect(() => {
-  //   setError(!checkInputString(searchText));
-  // }, [searchText]);
+  const handleResetInput = () => {
+    if (textInput.current) {
+      textInput.current.value = '';
+    }
+    setInputSearch('');
+    setUsersListFiltred(usersList);
+  };
+
+  useEffect(() => {
+    setError(!checkInputString(String(textInput.current?.value)));
+  }, [textInput.current?.value]);
 
   return (
     <div className={styles.wrapper}>
@@ -57,12 +53,7 @@ export const Search = ({
             handleInputChange(textInput.current?.value.trim() || '');
           }}
         />
-        <button
-          className={styles.button_clear}
-          onClick={() => {
-            // handleResetInput(textInput);
-          }}
-        >
+        <button className={styles.button_clear} onClick={handleResetInput}>
           <span className={styles.button_text}>Clear</span>
         </button>
       </div>

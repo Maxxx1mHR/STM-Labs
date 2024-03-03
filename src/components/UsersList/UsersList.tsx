@@ -13,16 +13,16 @@ export const UsersList = ({
   inputSearch,
   usersListFiltred,
 }: UsersList) => {
-  // if (filteredUsers.length === 0 && searchText !== '') {
-  //   return (
-  //     <div className={styles.nav_bottom}>
-  //       <h2 className={styles.not_found}>
-  //         No users matching the search filter were found!
-  //       </h2>
-  //     </div>
-  //   );
-  // }
-  // searchText === '' ? usersList : filteredUsers
+  if (usersListFiltred && inputSearch) {
+    console.log('true');
+    return (
+      <div className={styles.nav_bottom}>
+        <h2 className={styles.not_found}>
+          No users matching the search filter were found!
+        </h2>
+      </div>
+    );
+  }
 
   const users = inputSearch ? usersListFiltred : usersList;
   return (

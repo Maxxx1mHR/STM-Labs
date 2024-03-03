@@ -2,7 +2,6 @@ import { UsersList } from './UsersList/UsersList';
 import { useEffect, useState } from 'react';
 import { Loader } from './Loader/Loader';
 import { Footer } from './Footer/Footer';
-// import { Header } from './Header/Header';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 import { User } from '@type/user.interface';
@@ -40,6 +39,10 @@ export const App = () => {
     getUsers();
   }, []);
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <ErrorBoundary>
       <div className="wrapper">
@@ -57,13 +60,11 @@ export const App = () => {
             />
             <Search
               usersList={usersList}
-              setUsersList={setUsersList}
-              typeFilter={typeFilter}
               setInputSearch={setInputSearch}
+              typeFilter={typeFilter}
               setUsersListFiltred={setUsersListFiltred}
             />
           </section>
-          {/* <Header /> */}
           <UsersList
             usersList={usersList}
             inputSearch={inputSearch}

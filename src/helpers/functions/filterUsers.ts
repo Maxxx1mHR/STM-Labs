@@ -24,22 +24,3 @@ export const filterUsers = (
 
   return listOfUsers.filter(filterFunction);
 };
-
-// export const filterUsersByStartWordWith = (
-//   searchText: string,
-//   listOfUsers: User[]
-// ) => {
-//   if (!searchText) {
-//     return listOfUsers;
-//   }
-
-//   const searchTextLower = searchText.toLowerCase();
-
-//   const filteredUsers = listOfUsers.filter(
-//     ({ name }) =>
-//       `${name.first} ${name.last}`.toLowerCase().startsWith(searchTextLower) ||
-//       `${name.last} ${name.first}`.toLowerCase().startsWith(searchTextLower)
-//   );
-
-//   return filteredUsers;
-// };
