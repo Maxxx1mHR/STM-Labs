@@ -25,38 +25,38 @@ export const FilterType = ({
   };
 
   return (
-    <fieldset className={styles.fieldset}>
-      <legend className={styles.legend}>Select type filer:</legend>
+    <fieldset className={styles.filter}>
+      <legend className={styles.filter__header}>Select type filer:</legend>
       <form>
-        <div className={styles.fieldset__item}>
-          <label className={styles.fieldset__item_label}>
+        <div className={styles.filter__item}>
+          <label className={styles.filter__label}>
             <input
               type="radio"
               name="filter"
               checked={typeFilter === 'substring'}
               value="substring"
-              className={styles.fieldset__item_input}
+              className={styles.filter__input}
               onChange={() => {
                 handleSwitchTypeFilter('substring');
               }}
             />
-            <span className={styles.custom_radio}></span>
+            <span className={styles.button_radio}></span>
             Filter by substring in first or last name:
           </label>
         </div>
-        <div className={styles.fieldset__item}>
-          <label className={styles.fieldset__item_label}>
+        <div className={styles.filter__item}>
+          <label className={styles.filter__label}>
             <input
               type="radio"
               name="filter"
               value="startWith"
               checked={typeFilter === 'startWith'}
-              className={styles.fieldset__item_input}
+              className={styles.filter__input}
               onChange={() => {
                 handleSwitchTypeFilter('startWith');
               }}
             />
-            <span className={styles.custom_radio}></span>
+            <span className={styles.button_radio}></span>
             Filter by start with first or last name:
           </label>
         </div>

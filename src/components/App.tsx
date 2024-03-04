@@ -25,7 +25,6 @@ export const App = () => {
 
     try {
       const results = await getAllUsers(usersPerPage);
-      console.log(results.results);
       if (results) {
         setUsersList(results.results);
       }

@@ -23,7 +23,6 @@ export const Search = ({
   const [error, setError] = useState(false);
 
   const handleInputChange = (textInput: string) => {
-    console.log(textInput);
     const filtered = filterUsers(textInput, usersList, typeFilter);
     setUsersListFiltred(filtered);
     setInputSearch(textInput);
@@ -48,13 +47,13 @@ export const Search = ({
           type="text"
           ref={textInput}
           placeholder="Search by name"
-          className={styles.input}
+          className={styles.wrapper__text}
           onChange={() => {
             handleInputChange(textInput.current?.value.trim() || '');
           }}
         />
         <button className={styles.button_clear} onClick={handleResetInput}>
-          <span className={styles.button_text}>Clear</span>
+          Clear
         </button>
       </div>
       {error && (

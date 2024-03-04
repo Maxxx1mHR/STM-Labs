@@ -3,25 +3,25 @@
 
 .wrapper {
   position: relative;
-  margin-bottom: 3rem;
   text-align: center;
-}
-
-.input {
-  width: 30rem;
-  height: 3rem;
-  padding: 0.2rem 4.5rem 0.2rem 0.5rem;
-  border: 2px solid $color-main-dark;
-  border-radius: 1rem;
-  @include font($size: 1.8rem, $color: $color-secondary-light);
-  &:focus {
-    outline: none;
+  &__input {
+    position: relative;
+    display: inline;
   }
-}
-
-.wrapper__input {
-  position: relative;
-  display: inline;
+  &__text {
+    width: 30rem;
+    height: 3rem;
+    padding: 0.2rem 5.5rem 0.2rem 0.5rem;
+    border: 2px solid $color-main-dark;
+    border-radius: 1rem;
+    @include font($size: 1.8rem, $color: $color-secondary-light);
+    &:focus {
+      outline: none;
+    }
+    @include media-mobile {
+      width: 28rem;
+    }
+  }
 }
 
 .button_clear {
@@ -32,22 +32,12 @@
   height: 3rem;
   background-color: transparent;
   border: none;
+  transition: color 0.5s;
   @include font($size: 1.6rem);
-
   cursor: pointer;
   &:hover {
-    .button_text {
-      color: $color-danger;
-      transform: scale(1.1);
-    }
+    color: $color-danger;
   }
-}
-
-.button_text {
-  transition:
-    transform 0.5s,
-    color 0.5s;
-  display: inline-block;
 }
 
 .error {
