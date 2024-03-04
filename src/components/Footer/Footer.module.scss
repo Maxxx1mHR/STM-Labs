@@ -1,0 +1,46 @@
+@import '@styles/abstract/constants';
+@import '@styles/abstract/mixins';
+
+.footer {
+  background-color: $color-main-dark;
+  padding-bottom: 1rem;
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+}
+.github_img {
+  width: 5rem;
+  opacity: 0.5;
+  transition: all 0.7s;
+  &:hover {
+    opacity: 1;
+  }
+}
+.stmlabs_img {
+  width: 5rem;
+  opacity: 0.5;
+  transition: all 0.7s;
+  &:hover {
+    opacity: 1;
+  }
+}
+.copyright_img {
+  width: 2rem;
+}
+.telegram {
+  display: flex;
+  text-decoration: none;
+  opacity: 0.5;
+  transition: all 0.7s;
+  @include font($size: 1.6rem, $weight: 700, $color: $color-secondary-light);
+  &:hover {
+    opacity: 1;
+  }
+}
+.year {
+  text-align: center;
+  @include font($size: 1.4rem, $color: $color-light);
+}

@@ -1,0 +1,61 @@
+@import '@styles/abstract/constants';
+@import '@styles/abstract/mixins';
+
+.wrapper {
+  margin-bottom: 2rem;
+  overflow-x: auto;
+}
+.table {
+  margin: 0 auto;
+  padding-top: 8rem;
+  &__cell {
+    padding: 0.5rem;
+    border: 1px solid $color-secondary-light;
+    word-wrap: break-word;
+  }
+  &__header {
+    @include font($size: 1.8rem, $weight: 700, $color: $color-secondary-light);
+  }
+  &__description {
+    @include font($size: 1.4rem, $weight: 300, $color: $color-main-dark);
+  }
+  &__image_small {
+    width: 5rem;
+  }
+  &__image_large {
+    width: 10rem;
+  }
+}
+.tooltip {
+  position: relative;
+  cursor: pointer;
+  &__image {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 100%;
+    padding: 0.5rem;
+    border-radius: 0.6rem;
+    border: 1px solid $color-main-dark;
+    background-color: $color-light;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.7s;
+  }
+  &:hover {
+    & .tooltip__image {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+.not_found {
+  margin-top: 5rem;
+  text-align: center;
+  transition: font-size 0.5s;
+  @include font($size: 2rem, $weight: 700, $color: $color-danger);
+  @include media-mobile {
+    font-size: 1.8rem;
+  }
+}
