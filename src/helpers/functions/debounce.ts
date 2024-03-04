@@ -1,11 +1,13 @@
+// Функция для создания зодержки вызова функции, которая используется в качестве параметра
 export const debounce = <T extends string[]>(
   fn: (...args: T) => void,
   ms: number
 ) => {
   let timeout: ReturnType<typeof setTimeout>;
-  return function (this: string, ...args: T) {
+  // Вызов функции после задарежки ms
+  return function (...args: T) {
     const fnCall = () => {
-      fn.apply(this, args);
+      fn(...args);
     };
     clearTimeout(timeout);
     timeout = setTimeout(fnCall, ms);

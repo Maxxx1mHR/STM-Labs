@@ -11,7 +11,6 @@
     padding: 1rem 2rem;
   }
 }
-
 .github_img {
   width: 5rem;
   opacity: 0.5;
@@ -20,7 +19,6 @@
     opacity: 1;
   }
 }
-
 .stmlabs_img {
   width: 5rem;
   opacity: 0.5;
@@ -29,11 +27,9 @@
     opacity: 1;
   }
 }
-
 .copyright_img {
   width: 2rem;
 }
-
 .telegram {
   display: flex;
   text-decoration: none;
@@ -44,7 +40,6 @@
     opacity: 1;
   }
 }
-
 .year {
   text-align: center;
   @include font($size: 1.4rem, $color: $color-light);

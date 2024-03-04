@@ -1,8 +1,8 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
-import error from '@assets/img/error.gif';
 import styles from './ErrorBoundary.module.scss';
+import error from '@assets/img/error.gif';
 
-export default class ErrorBoundary extends Component<{
+export class ErrorBoundary extends Component<{
   children: ReactNode;
 }> {
   state = {

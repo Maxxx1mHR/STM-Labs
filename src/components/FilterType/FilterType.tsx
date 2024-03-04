@@ -1,7 +1,7 @@
-import { TypeFilter } from '@type/type';
 import styles from './FilterType.module.scss';
-import { filterUsers } from '@helpers/functions/filterUsers';
+import { TypeFilter } from '@type/type';
 import { User } from '@type/user.interface';
+import { filterUsers } from '@helpers/functions/filterUsers';
 
 interface FilterTypeProps {
   inputSearch: string;
@@ -18,6 +18,7 @@ export const FilterType = ({
   typeFilter,
   setTypeFilter,
 }: FilterTypeProps) => {
+  // Функция для фильтрации пользователей, при изменении типа фильтра
   const handleSwitchTypeFilter = (typeFilter: TypeFilter) => {
     setTypeFilter(typeFilter);
     const filtered = filterUsers(inputSearch, usersList, typeFilter);

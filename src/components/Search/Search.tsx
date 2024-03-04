@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
-import styles from './Search.module.scss';
+import { useRef, useState } from 'react';
 import { TypeFilter } from '@type/type';
 import { User } from '@type/user.interface';
 import { filterUsers } from '@helpers/functions/filterUsers';
 import { checkInputString } from '@helpers/validation/checkInputString';
+import { debounce } from '@helpers/functions/debounce';
+import styles from './Search.module.scss';
 
 interface SearchProps {
   usersList: User[];
@@ -19,26 +20,25 @@ export const Search = ({
   setUsersListFiltred,
 }: SearchProps) => {
   const textInput = useRef<HTMLInputElement>(null);
+  const [inputError, setInputError] = useState(false);
 
-  const [error, setError] = useState(false);
-
-  const handleInputChange = (textInput: string) => {
+  // Обработчик фильтраци пользователей с задержкой
+  const handleInputChange = debounce((textInput: string) => {
     const filtered = filterUsers(textInput, usersList, typeFilter);
     setUsersListFiltred(filtered);
     setInputSearch(textInput);
-  };
+    setInputError(!checkInputString(textInput));
+  }, 280);
 
+  // Сброс параметров поиска до состояния по умолчанию
   const handleResetInput = () => {
     if (textInput.current) {
       textInput.current.value = '';
     }
     setInputSearch('');
     setUsersListFiltred(usersList);
+    setInputError(false);
   };
-
-  useEffect(() => {
-    setError(!checkInputString(String(textInput.current?.value)));
-  }, [textInput.current?.value]);
 
   return (
     <div className={styles.wrapper}>
@@ -49,14 +49,14 @@ export const Search = ({
           placeholder="Search by name"
           className={styles.wrapper__text}
           onChange={() => {
-            handleInputChange(textInput.current?.value.trim() || '');
+            handleInputChange(textInput.current?.value || '');
           }}
         />
         <button className={styles.button_clear} onClick={handleResetInput}>
           Clear
         </button>
       </div>
-      {error && (
+      {inputError && (
         <p className={styles.error}>
           Invalid input format! Only letters, not symbols.
         </p>

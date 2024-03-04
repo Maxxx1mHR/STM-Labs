@@ -13,6 +13,7 @@ export const UsersList = ({
   inputSearch,
   usersListFiltred,
 }: UsersList) => {
+  // Проверка на наличие пользователей соответсвующих параметру фильтра
   if (!usersListFiltred.length && inputSearch) {
     return (
       <h2 className={styles.not_found}>
@@ -21,6 +22,7 @@ export const UsersList = ({
     );
   }
 
+  // Определение списка пользователей для отображения
   const users = inputSearch ? usersListFiltred : usersList;
   return (
     <>

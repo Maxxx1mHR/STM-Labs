@@ -1,25 +1,24 @@
-import { UsersList } from './UsersList/UsersList';
 import { useEffect, useState } from 'react';
+import { UsersList } from './UsersList/UsersList';
 import { Loader } from './Loader/Loader';
 import { Footer } from './Footer/Footer';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
-
+import { ErrorBoundary } from './ErrorBoundary/ErrorBoundary';
+import { Search } from './Search/Search';
+import { FilterType } from './FilterType/FilterType';
 import { User } from '@type/user.interface';
 import { getAllUsers } from '@service/UsersService';
-import { FilterType } from './FilterType/FilterType';
-import { Search } from './Search/Search';
 import { TypeFilter } from '@type/type';
+import { USERS_PER_PAGE } from '@helpers/constants';
 
 export const App = () => {
   const [usersList, setUsersList] = useState<User[]>([]);
   const [usersListFiltred, setUsersListFiltred] = useState<User[]>([]);
-
   const [isLoading, setIsLoading] = useState(false);
   const [typeFilter, setTypeFilter] = useState<TypeFilter>('substring');
-
   const [inputSearch, setInputSearch] = useState('');
-  const [usersPerPage] = useState(15);
+  const [usersPerPage] = useState(USERS_PER_PAGE);
 
+  // Функция для получения пользователей
   const getUsers = async () => {
     setIsLoading(true);
 
@@ -31,16 +30,14 @@ export const App = () => {
       setIsLoading(false);
     } catch (error) {
       console.error(error);
+      setIsLoading(false);
     }
   };
 
+  // Еффект для загрузки пользователей при первом монтировании компонента
   useEffect(() => {
     getUsers();
   }, []);
-
-  if (isLoading) {
-    return <Loader />;
-  }
 
   return (
     <ErrorBoundary>
@@ -64,11 +61,15 @@ export const App = () => {
               setUsersListFiltred={setUsersListFiltred}
             />
           </section>
-          <UsersList
-            usersList={usersList}
-            inputSearch={inputSearch}
-            usersListFiltred={usersListFiltred}
-          />
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <UsersList
+              usersList={usersList}
+              inputSearch={inputSearch}
+              usersListFiltred={usersListFiltred}
+            />
+          )}
         </main>
         <Footer />
       </div>
