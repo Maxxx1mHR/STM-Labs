@@ -46,29 +46,31 @@ export const App = () => {
           <h1>Test assignment for the position of Junior Frontend Developer</h1>
         </header>
         <main className="main">
-          <section>
-            <FilterType
-              inputSearch={inputSearch}
-              usersList={usersList}
-              setUsersListFiltred={setUsersListFiltred}
-              typeFilter={typeFilter}
-              setTypeFilter={setTypeFilter}
-            />
-            <Search
-              usersList={usersList}
-              setInputSearch={setInputSearch}
-              typeFilter={typeFilter}
-              setUsersListFiltred={setUsersListFiltred}
-            />
-          </section>
           {isLoading ? (
             <Loader />
           ) : (
-            <UsersList
-              usersList={usersList}
-              inputSearch={inputSearch}
-              usersListFiltred={usersListFiltred}
-            />
+            <>
+              <section>
+                <FilterType
+                  inputSearch={inputSearch}
+                  usersList={usersList}
+                  setUsersListFiltred={setUsersListFiltred}
+                  typeFilter={typeFilter}
+                  setTypeFilter={setTypeFilter}
+                />
+                <Search
+                  usersList={usersList}
+                  setInputSearch={setInputSearch}
+                  typeFilter={typeFilter}
+                  setUsersListFiltred={setUsersListFiltred}
+                />
+              </section>
+              <UsersList
+                usersList={usersList}
+                inputSearch={inputSearch}
+                usersListFiltred={usersListFiltred}
+              />
+            </>
           )}
         </main>
         <Footer />
