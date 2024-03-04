@@ -1,0 +1,22 @@
+@import '@styles/abstract/constants';
+@import '@styles/abstract/mixins';
+
+.count {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+  color: $color-secondary-light;
+  transition: font-size 0.5;
+  @include font($size: 1.6rem);
+  @include media-mobile {
+    font-size: 1.4rem;
+  }
+}
+
+.count__header {
+  margin-right: 2rem;
+}
+
+.count__select {
+  cursor: pointer;
+}
